@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const _ = require('lodash')
+const _ = require('lodash');
 
 const app = express();
 app.set("view engine", "ejs");
@@ -8,6 +8,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 mongoose.set('strictQuery', false);
 
+// make environment variables in Render for MogoDB-Atlas USER and PASSWORD.
+// use process.env.USER and process.env.PASSWORD in the connection string ${}
 mongoose.connect("mongodb+srv://admin-michael:Password123@clustertodo.jpotsaz.mongodb.net/todolistDB", {useNewUrlParser: true})
 
 const port = process.env.PORT || 3000;
@@ -28,9 +30,13 @@ const item2 = new Item({
 
 const item3 = new Item({
   name: "<-- click to delete items"
-});
+})
 
-const defaultItems = [item1, item2, item3];
+const item4 = new Item({
+  name: "Create a new list by adding /NEW-LIST-NAME to the URL"
+})
+
+const defaultItems = [item1, item2, item3, item4];
 
 const listSchema = new mongoose.Schema({
   name: String,
