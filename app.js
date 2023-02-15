@@ -9,9 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 mongoose.set('strictQuery', false);
 
-// make environment variables in Render for MogoDB-Atlas USER and PASSWORD.
-// use process.env.USER and process.env.PASSWORD in the connection string ${}
-// mongoose.connect("mongodb+srv://admin-michael:Password123@clustertodo.jpotsaz.mongodb.net/todolistDB", {useNewUrlParser: true})
+// .env is in .gitignore
 mongoose.connect(`mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@clustertodo.jpotsaz.mongodb.net/todolistDB`, {useNewUrlParser: true})
 
 
