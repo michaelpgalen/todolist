@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const mongoose = require('mongoose');
 const _ = require('lodash');
@@ -10,7 +11,9 @@ mongoose.set('strictQuery', false);
 
 // make environment variables in Render for MogoDB-Atlas USER and PASSWORD.
 // use process.env.USER and process.env.PASSWORD in the connection string ${}
-mongoose.connect("mongodb+srv://admin-michael:Password123@clustertodo.jpotsaz.mongodb.net/todolistDB", {useNewUrlParser: true})
+// mongoose.connect("mongodb+srv://admin-michael:Password123@clustertodo.jpotsaz.mongodb.net/todolistDB", {useNewUrlParser: true})
+mongoose.connect(`mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@clustertodo.jpotsaz.mongodb.net/todolistDB`, {useNewUrlParser: true})
+
 
 const port = process.env.PORT || 3000;
 
