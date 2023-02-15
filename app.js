@@ -10,6 +10,8 @@ mongoose.set('strictQuery', false);
 
 mongoose.connect("mongodb+srv://admin-michael:Password123@clustertodo.jpotsaz.mongodb.net/todolistDB", {useNewUrlParser: true})
 
+const port = process.env.PORT || 3000;
+
 const itemsSchema = new mongoose.Schema({
   name: String
 })
@@ -131,6 +133,6 @@ app.get("/about", function (req, res) {
   res.render("about");
 });
 
-app.listen(3000, function () {
-  console.log("Server started on port 3000");
+app.listen(port, function () {
+  console.log(`Server listenning on port ${port}`);
 });
